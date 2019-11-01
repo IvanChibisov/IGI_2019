@@ -11,5 +11,6 @@ namespace SystemOfTestKnowledge.Models
         public string Text { get; set; }
         public string CorrectAnswer { get;  set; }
         public string AnswerOptions { get; set; }
+        public int TestId { get; set; }
     }
 }

@@ -1,28 +1,8 @@
-﻿@model IEnumerable<SystemOfTestKnowledge.Models.TestingQuestion>
+﻿
 @{
     ViewData["Title"] = "Home Page";
 }
 
-<!DOCTYPE html>
 
-<html>
-<head>
-    <title>Список вопросов</title>
-</head>
-<body>
-    @foreach (var question in Model)
-    {
-        <p id="just-line-break">@question.Text</p>
-        <table>
 
-            <tr>
-                @foreach (var answer in question.AnswerOptions.Split(" ", StringSplitOptions.RemoveEmptyEntries))
-                {
-                    <td width="60px"><button>@answer</button></td>
-                }
-            </tr>
-        </table>
-        <p><span id="status"></span></p>
-    }
-</body>
-</html>
+

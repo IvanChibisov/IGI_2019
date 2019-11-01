@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.DependencyInjection;
 using SystemOfTestKnowledge.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace SystemOfTestKnowledge
 {
@@ -16,15 +17,33 @@ namespace SystemOfTestKnowledge
     {
         public static void Main(string[] args)
         {
-          //  CreateWebHostBuilder(args).Build().Run();
+            //BuildWebHost(args).Run();
             var host = CreateWebHostBuilder(args).Build();
+
             using (var scope = host.Services.CreateScope())
             {
                 var services = scope.ServiceProvider;
                 try
                 {
                     var context = services.GetRequiredService<SystemContext>();
+                    var userManager = services.GetRequiredService<UserManager<User>>();
+                    var rolesManager = services.GetRequiredService<RoleManager<IdentityRole>>();
+                    var t = RoleInitializer.InitializeAsync(userManager, rolesManager);
+                    t.Wait();
                     SampleData.Initialize(context);
+                    if (!context.TestTable.Any())
+                    {
+                        context.TestTable.AddRange
+                        (
+                            new Test
+                            {
+                                Title = "Тест по основам C#",
+                                Id = 1,
+                                KnowledgeArea = "C#"
+                            }
+                        );
+                        context.SaveChanges();
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -32,6 +51,7 @@ namespace SystemOfTestKnowledge
                     logger.LogError(ex, "An error occurred while seeding the database.");
                 }
             }
+
             host.Run();
         }
 

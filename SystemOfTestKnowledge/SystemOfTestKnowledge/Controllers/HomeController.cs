@@ -17,7 +17,7 @@ namespace SystemOfTestKnowledge.Controllers
         }
         public IActionResult Index()
         {
-            return View(db.Questions.ToList());
+            return View();
         }
 
         [HttpGet]
@@ -27,6 +27,10 @@ namespace SystemOfTestKnowledge.Controllers
             return View();
         }
 
+        public IActionResult Privacy()
+        {
+            return View();
+        }
         
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

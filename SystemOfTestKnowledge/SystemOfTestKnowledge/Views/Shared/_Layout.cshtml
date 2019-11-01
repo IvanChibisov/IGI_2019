@@ -31,6 +31,25 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                    @if (!User.Identity.IsAuthenticated)
+                    {
+                        <li><a asp-area="" asp-controller="Account" asp-action="Login">Login</a></li>
+                        <li><a asp-area="" asp-controller="Account" asp-action="Register">Register</a></li>
+                    }
+
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li><a asp-area="" asp-controller="Tests" asp-action="TestList">Tests</a></li>
+                        <li><a asp-area="" asp-controller="Account" asp-action="Index">LogOff</a></li>
+                        <li><a asp-area="" asp-controller="Users" asp-action="UserList">Setting User</a></li>
+                        <li><a asp-area="" asp-controller="Home" asp-action="Privacy">Users</a></li>
+
+                    }
+                    @if (User.IsInRole("admin"))
+                    {
+                        <li><a asp-area="" asp-controller="Roles" asp-action="UserList">Users</a></li>
+                    }
+                    <li><a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a></li>
                 </ul>
             </div>
         </div>

@@ -9,7 +9,6 @@ namespace SystemOfTestKnowledge.Models
     {
         public int Id { get; set; }
         public string Title { get; set; }
-        public List<int> QuestionsId { get; set; }
-        public List<TestingQuestion> Questions { get; set; }
+        public string KnowledgeArea { get; set; }
     }
 }
