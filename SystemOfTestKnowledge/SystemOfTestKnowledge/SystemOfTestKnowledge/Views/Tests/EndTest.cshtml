@@ -1,0 +1,16 @@
+﻿@model SystemOfTestKnowledge.ViewModels.ResultTestViewModel
+@{
+    ViewData["Title"] = "EndTest";
+}
+<p>Количество правильных ответов @Model.CountCorrectAnswer из @Model.CountAllQuestion.</p>
+@if (Model.CountAllQuestion / 2 < Model.CountCorrectAnswer)
+{
+    <p>Неплохой результат</p>
+}
+else
+{
+    <p>Вам нужно подтянуть свои знания</p>    
+}
+
+<a asp-action="GoToTestsList" asp-controller="Tests">Back</a>
+

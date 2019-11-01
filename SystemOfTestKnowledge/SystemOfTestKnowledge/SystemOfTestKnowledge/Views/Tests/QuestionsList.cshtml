@@ -1,0 +1,24 @@
+﻿@model SystemOfTestKnowledge.ViewModels.EditTestViewModel
+@{
+    ViewData["Title"] = "QuestionsList";
+}
+<table>
+    <tr><th>Title</th><th>Language</th></tr>
+    @foreach (var question in Model.Questions)
+    {
+        <tr>
+            <td>@question.Text</td>
+            <td>
+                <form asp-action="EditQuestion" asp-controller="Tests" asp-route-id="@question.Id" method="post">
+                    <button type="submit" class="btn btn-sm btn-danger">
+                        Edit
+                    </button>
+                    <a class="btn btn-sm btn-danger" asp-action="DeleteQuestion" asp-controller="Tests" asp-route-id="@question.Id">AddQuestion</a>
+                </form>
+            </td>
+        </tr>
+    }
+</table>
+<p><span id="status"></span></p>
+<h2>QuestionsList</h2>
+

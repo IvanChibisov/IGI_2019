@@ -1,0 +1,20 @@
+﻿@model SystemOfTestKnowledge.ViewModels.QuestionViewModel
+
+<tr>
+    <td><p id="just-line-break">@Model.Index.ToString() . @Model.Text</p></td>
+    @{ Model.Index++; }
+</tr>
+
+
+<table>
+    <tr>
+        @foreach (var answer in Model.AnswerOptions.Split(" ", StringSplitOptions.RemoveEmptyEntries))
+        {
+
+            <td width="60px">
+                <a asp-action="GetAnswer" asp-controller="Tests" class="btn btn-sm btn-danger" asp-all-route-data='new Dictionary<string, string> { { "id", Model.Id.ToString() }, { "answer", answer }, { "correctAnswer", Model.CorrectAnswer} } '>@answer</a>
+            </td>
+        }
+    </tr>
+</table>
+<p><span id="status"></span></p>

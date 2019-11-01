@@ -1,0 +1,40 @@
+﻿@model IEnumerable<SystemOfTestKnowledge.Models.Test>
+@{
+    ViewData["Title"] = "TestList";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Список вопросов</title>
+</head>
+<body>
+
+    <table>
+        <tr><th>Title</th><th>Language</th></tr>
+        @foreach (var test in Model)
+        {
+            <tr>
+                <td>@test.Title</td>
+                <td>@test.KnowledgeArea</td>
+                <td>
+                    <form asp-action="StartTest" asp-controller="Tests" asp-route-id="@test.Id" method="post">
+                        <button type="submit" class="btn btn-sm btn-danger">
+                            Начать тест
+                        </button>
+                        @if (User.IsInRole("admin"))
+                        {
+                            <a class="btn btn-sm btn-primary" asp-action="AddQuestion" asp-controller="Tests" asp-route-id="@test.Id">AddQuestion</a>
+                            <a class="btn btn-sm btn-primary" asp-action="QuestionList" asp-controller="Tests" asp-route-id="@test.Id">Edit Question</a>
+                        }
+                    </form>
+                </td>
+            </tr>
+        }
+    </table>
+    <p><span id="status"></span></p>
+        
+</body>
+</html>
+

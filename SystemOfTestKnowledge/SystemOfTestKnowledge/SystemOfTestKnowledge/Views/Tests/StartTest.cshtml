@@ -1,0 +1,30 @@
+﻿
+@model IEnumerable<SystemOfTestKnowledge.Models.TestingQuestion>
+@{ string TestId = "";}
+@{
+    ViewData["Title"] = "StartTest";
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Список вопросов</title>
+</head>
+<body>
+    @{ int index = 0;
+    }
+    @foreach (var question in Model)
+    {
+        @if (index >= 0)
+        {
+            index++;
+            TestId = question.TestId.ToString();
+        }
+        @await Component.InvokeAsync("Question", new { questionId = question.Id, _index = index })
+    }
+
+</body>
+
+</html>
+<a asp-action="EndTest" asp-controller="Tests" asp-route-id="@TestId">Закончить тест</a>
+
