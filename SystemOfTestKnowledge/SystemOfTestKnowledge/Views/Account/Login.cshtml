@@ -1,25 +1,27 @@
 ﻿@model SystemOfTestKnowledge.ViewModels.LoginViewModel
+@using System.Globalization;
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
 
-
-<h2>Вход в приложение</h2>
-<form method="post" asp-controller="Account" asp-action="Login"
+<h2>@Localizer["login"]</h2>
+<form method="post" asp-route="login"
       asp-route-returnUrl="@Model.ReturnUrl">
     <div asp-validation-summary="ModelOnly"></div>
     <div>
-        <label asp-for="Email"></label><br />
+        <label asp-for="Email">@Localizer["email"]</label><br />
         <input asp-for="Email" />
         <span asp-validation-for="Email"></span>
     </div>
     <div>
-        <label asp-for="Password"></label><br />
+        <label asp-for="Password">@Localizer["password"]</label><br />
         <input asp-for="Password" />
         <span asp-validation-for="Password"></span>
     </div>
     <div>
-        <label asp-for="RememberPassw"></label><br />
+        <label asp-for="RememberPassw">@Localizer["remember"]</label><br />
         <input asp-for="RememberPassw" />
     </div>
     <div>
-        <input type="submit" value="Войти" />
+        <input type="submit" value="@Localizer["enter"]" />
     </div>
 </form>

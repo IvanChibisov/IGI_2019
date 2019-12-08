@@ -62,7 +62,7 @@ using SystemOfTestKnowledge.Models;
             WriteLiteral("\r\n");
             EndContext();
             BeginContext(47, 9, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("vk", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8e7c5334829349e2b3d5216a5d862816", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("vk", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2a48721fa708414f8cb73ddd86f8deaa", async() => {
             }
             );
             __SystemOfTestKnowledge_TagHelpers_VKTagHelper = CreateTagHelper<global::SystemOfTestKnowledge.TagHelpers.VKTagHelper>();

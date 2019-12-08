@@ -11,7 +11,7 @@ namespace SystemOfTestKnowledge.Models
         public DbSet<Test> TestTable { get; set; }
         public DbSet<TestingQuestion> Questions { get; set; }
         public DbSet<UsersAnswer> UsersAnswers { get; set; }
-
+        public DbSet<Comment> Comments { get; set; }
         public SystemContext(DbContextOptions<SystemContext> options) : base(options)
         {
             Database.EnsureCreated();

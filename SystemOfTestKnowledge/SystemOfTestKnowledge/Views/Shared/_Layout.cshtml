@@ -1,20 +1,28 @@
 ﻿<!DOCTYPE html>
+@using System.Globalization;
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
 <html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - SystemOfTestKnowledge</title>
+    <div class="container body-content">
+        <div>
+            @await Html.PartialAsync("_SelectLanguagePartial")
+        </div>
+        @RenderBody()
+        <title>@ViewData["Title"] - SystemOfTestKnowledge</title>
 
-    <environment include="Development">
-        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-        <link rel="stylesheet" href="~/css/site.css" />
-    </environment>
-    <environment exclude="Development">
-        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
-              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
-              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
-        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
-    </environment>
+        <environment include="Development">
+            <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+            <link rel="stylesheet" href="~/css/site.css" />
+        </environment>
+        <environment exclude="Development">
+            <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
+                  asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+                  asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+            <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+        </environment>
 </head>
 <body>
     <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -26,31 +34,36 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">SystemOfTestKnowledge</a>
+                <a asp-route="home" class="navbar-brand">SystemOfTestKnowledge</a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                    <li><a asp-route="home">@Localizer["home"]</a></li>
                     @if (!User.Identity.IsAuthenticated)
                     {
-                        <li><a asp-area="" asp-controller="Account" asp-action="Login">Login</a></li>
-                        <li><a asp-area="" asp-controller="Account" asp-action="Register">Register</a></li>
+                        <li><a asp-route="login">@Localizer["login"]</a></li>
+                        <li><a asp-route="register">@Localizer["register"]</a></li>
                     }
 
                     @if (User.Identity.IsAuthenticated)
                     {
-                        <li><a asp-area="" asp-controller="Tests" asp-action="TestList">Tests</a></li>
-                        <li><a asp-area="" asp-controller="Account" asp-action="Index">LogOff</a></li>
-                        <li><a asp-area="" asp-controller="Users" asp-action="UserList">Setting User</a></li>
-                        <li><a asp-area="" asp-controller="Home" asp-action="Privacy">Users</a></li>
-
+                        <li><a asp-route="testlist">@Localizer["tests"]</a></li>
+                        <li><a asp-route="account_logoff">@Localizer["logoff"]</a></li>
                     }
                     @if (User.IsInRole("admin"))
                     {
-                        <li><a asp-area="" asp-controller="Roles" asp-action="UserList">Users</a></li>
+                        <li><a asp-route="userlist">@Localizer["settings"]</a></li>
+                        <li><a asp-route="role_userslist">@Localizer["users"]</a></li>
                     }
-                    <li><a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a></li>
-                </ul>
+                    else
+                    {
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li><a asp-route="settinguser">@Localizer["setting"]</a></li>
+                        }
+                    }
+                    <li><a asp-route="privacy">@Localizer["privacy"]</a></li>
+                    </ul>
             </div>
         </div>
     </nav>

@@ -1,14 +1,18 @@
 ﻿
 @model IEnumerable<SystemOfTestKnowledge.Models.TestingQuestion>
+@using System.Globalization;
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+
 @{ string TestId = "";}
 @{
-    ViewData["Title"] = "StartTest";
+    ViewData["Title"] = Localizer["start"];
 }
 <!DOCTYPE html>
 
 <html>
 <head>
-    <title>Список вопросов</title>
+    <title>@Localizer["list"]</title>
 </head>
 <body>
     @{ int index = 0;
@@ -26,5 +30,5 @@
 </body>
 
 </html>
-<a asp-action="EndTest" asp-controller="Tests" asp-route-id="@TestId">Закончить тест</a>
+<a asp-route="end_test" asp-route-id="@TestId">@Localizer["end"]</a>
 

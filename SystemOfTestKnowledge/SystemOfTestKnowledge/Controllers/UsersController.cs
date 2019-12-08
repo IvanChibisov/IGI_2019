@@ -9,6 +9,14 @@ using SystemOfTestKnowledge.ViewModels;
 
 namespace SystemOfTestKnowledge.Controllers
 {
+
+    public class PagedData<T> where T : class
+    {
+        public IEnumerable<T> Data { get; set; }
+        public int NumberOfPages { get; set; }
+        public int CurrentPage { get; set; }
+    } 
+
     public class UsersController: Controller
     {
         UserManager<User> _userManager;
@@ -17,9 +25,10 @@ namespace SystemOfTestKnowledge.Controllers
             _userManager = userManager;
         }
 
-        public IActionResult UserList()
+        public IActionResult UserSetting()
         {
-            return View(_userManager.Users.ToList());
+            var u = _userManager.FindByNameAsync(User.Identity.Name).Result;
+            return View(u);
         }
 
         public IActionResult Create() => View();
@@ -74,7 +83,7 @@ namespace SystemOfTestKnowledge.Controllers
                     var result = await _userManager.UpdateAsync(user);
                     if (result.Succeeded)
                     {
-                        return RedirectToAction("Index", "Home");
+                        return RedirectToRoute("default");
                     }
                     else
                     {
@@ -87,6 +96,7 @@ namespace SystemOfTestKnowledge.Controllers
             }
             return View(model);
         }
+
         [HttpPost]
         public async Task<IActionResult> Delete(string id)
         {
@@ -95,7 +105,7 @@ namespace SystemOfTestKnowledge.Controllers
             {
                 IdentityResult result = await _userManager.DeleteAsync(user);
             }
-            return RedirectToAction("Index", "Home");
+            return RedirectToRoute("userlist");
         }
 
         public async Task<IActionResult> ChangePassword(string id)
@@ -117,6 +127,10 @@ namespace SystemOfTestKnowledge.Controllers
                 User user = await _userManager.FindByIdAsync(model.Id);
                 if (user != null)
                 {
+                    if (model.OldPassword == null || model.NewPassword == null)
+                    {
+                        return RedirectToRoute("change_password");
+                    }
                     IdentityResult result =
                         await _userManager.ChangePasswordAsync(user, model.OldPassword, model.NewPassword);
                     if (result.Succeeded)
@@ -185,6 +199,28 @@ namespace SystemOfTestKnowledge.Controllers
                 }
             }
             return View(model);
+        }
+        public const int PageSize = 4;
+
+        public ActionResult Index()
+        {
+            var routes = new PagedData<User>();
+
+            routes.Data = _userManager.Users.Skip(PageSize * 0).Take(PageSize).ToList();
+            routes.NumberOfPages = Convert.ToInt32(Math.Ceiling((double)_userManager.Users.Count() / PageSize));
+
+            return View(routes);
+        }
+
+        public ActionResult RouteListAjax(int page)
+        {
+            var routes = new PagedData<User>();
+
+            routes.Data = _userManager.Users.Skip(PageSize * (page - 1)).Take(PageSize).ToList();
+            routes.NumberOfPages = Convert.ToInt32(Math.Ceiling((double)_userManager.Users.Count() / PageSize));
+            routes.CurrentPage = page;
+
+            return PartialView(routes);
         }
     }
 }

@@ -10,9 +10,8 @@
     <tr>
         @foreach (var answer in Model.AnswerOptions.Split(" ", StringSplitOptions.RemoveEmptyEntries))
         {
-
             <td width="60px">
-                <a asp-action="GetAnswer" asp-controller="Tests" class="btn btn-sm btn-danger" asp-all-route-data='new Dictionary<string, string> { { "id", Model.Id.ToString() }, { "answer", answer }, { "correctAnswer", Model.CorrectAnswer} } '>@answer</a>
+                <a asp-action="GetAnswer" asp-controller="Tests" class="btn btn-sm btn-default " asp-all-route-data='new Dictionary<string, string> { { "id", Model.Id.ToString() }, { "answer", answer }, { "correctAnswer", Model.CorrectAnswer} } '>@answer</a>
             </td>
         }
     </tr>

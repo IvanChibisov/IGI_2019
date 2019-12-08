@@ -10,6 +10,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.DependencyInjection;
 using SystemOfTestKnowledge.Models;
 using Microsoft.AspNetCore.Identity;
+using System.Globalization;
 
 namespace SystemOfTestKnowledge
 {
@@ -18,6 +19,9 @@ namespace SystemOfTestKnowledge
         public static void Main(string[] args)
         {
             //BuildWebHost(args).Run();
+
+            CultureInfo.CurrentCulture = new CultureInfo("en", true);
+            CultureInfo.CurrentUICulture = new CultureInfo("en", true);
             var host = CreateWebHostBuilder(args).Build();
 
             using (var scope = host.Services.CreateScope())
@@ -26,24 +30,22 @@ namespace SystemOfTestKnowledge
                 try
                 {
                     var context = services.GetRequiredService<SystemContext>();
+                    if (!context.Comments.Any())
+                    {
+                        context.Comments.AddRange
+                            (
+                                new Comment
+                                {
+                                    Text = "Hello",
+                                    UserName = "sample User"
+                                }
+                                );
+                        context.SaveChanges();
+                    }
                     var userManager = services.GetRequiredService<UserManager<User>>();
                     var rolesManager = services.GetRequiredService<RoleManager<IdentityRole>>();
                     var t = RoleInitializer.InitializeAsync(userManager, rolesManager);
                     t.Wait();
-                    SampleData.Initialize(context);
-                    if (!context.TestTable.Any())
-                    {
-                        context.TestTable.AddRange
-                        (
-                            new Test
-                            {
-                                Title = "Тест по основам C#",
-                                Id = 1,
-                                KnowledgeArea = "C#"
-                            }
-                        );
-                        context.SaveChanges();
-                    }
                 }
                 catch (Exception ex)
                 {

@@ -1,24 +1,26 @@
 ﻿@model SystemOfTestKnowledge.ViewModels.EditTestViewModel
+@using System.Globalization;
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
 @{
-    ViewData["Title"] = "QuestionsList";
+    ViewData["Title"] = Localizer["list"];
 }
 <table>
-    <tr><th>Title</th><th>Language</th></tr>
+    <tr><th>@Localizer["title"]</th><th>@Localizer["language"]</th></tr>
     @foreach (var question in Model.Questions)
     {
         <tr>
             <td>@question.Text</td>
             <td>
-                <form asp-action="EditQuestion" asp-controller="Tests" asp-route-id="@question.Id" method="post">
+                <form asp-route-controller="Question" asp-route-action="EditQuestion" asp-route="question" asp-route-id="@question.Id" method="get">
                     <button type="submit" class="btn btn-sm btn-danger">
-                        Edit
+                        @Localizer["edit"]
                     </button>
-                    <a class="btn btn-sm btn-danger" asp-action="DeleteQuestion" asp-controller="Tests" asp-route-id="@question.Id">AddQuestion</a>
+                    <a class="btn btn-sm btn-danger" asp-action="DeleteQuestion" asp-controller="Tests" asp-route-id="@question.Id">@Localizer["delete"]</a>
                 </form>
             </td>
         </tr>
     }
 </table>
-<p><span id="status"></span></p>
-<h2>QuestionsList</h2>
+
 

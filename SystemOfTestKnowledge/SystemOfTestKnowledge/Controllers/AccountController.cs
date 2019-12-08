@@ -6,6 +6,8 @@ using SystemOfTestKnowledge.Models;
 using SystemOfTestKnowledge.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Localization;
+using Microsoft.AspNetCore.Http;
 
 namespace SystemOfTestKnowledge.Controllers
 {

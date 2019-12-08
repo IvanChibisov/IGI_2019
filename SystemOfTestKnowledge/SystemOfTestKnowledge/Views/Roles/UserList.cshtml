@@ -1,16 +1,19 @@
 ﻿@model IEnumerable<SystemOfTestKnowledge.Models.User>
+@using System.Globalization;
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
 
-<h2>Список пользователей</h2>
+<h2>@Localizer["userslist"]</h2>
 <table class="table">
     @foreach (var user in Model)
     {
         <tr>
             <td>@user.Email</td>
             <td>
-                <a class="btn btn-sm btn-primary" asp-action="Edit" asp-route-userid="@user.Id">Права доступа</a>
+                <a class="btn btn-sm btn-primary" asp-route="edit_users_role" asp-route-userid="@user.Id">@Localizer["access"]</a>
             </td>
         </tr>
     }
 </table>
 
-<a asp-action="Index">Роли</a>
+<a asp-route="roles">@Localizer["roles"]</a>

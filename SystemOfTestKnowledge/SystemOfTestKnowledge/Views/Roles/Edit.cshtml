@@ -1,10 +1,12 @@
 ﻿
 @using Microsoft.AspNetCore.Identity
 @model SystemOfTestKnowledge.ViewModels.ChangeRoleViewModel
+@using System.Globalization;
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+<h2>@Localizer["change_roles_for"] @Model.UserEmail</h2>
 
-<h2>Изменение ролей для пользователя @Model.UserEmail</h2>
-
-<form asp-action="Edit" method="post">
+<form asp-route="edit_users_role" method="post">
     <input type="hidden" name="userId" value="@Model.UserId" />
     <div class="form-group">
         @foreach (IdentityRole role in Model.AllRoles)
@@ -13,5 +15,5 @@
                    @(Model.UserRoles.Contains(role.Name) ? "checked=\"checked\"" : "") />@role.Name <br />
             }
     </div>
-    <button type="submit" class="btn btn-primary">Сохранить</button>
+    <button type="submit" class="btn btn-primary">@Localizer["save"]</button>
 </form>

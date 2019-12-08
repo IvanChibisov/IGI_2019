@@ -41,29 +41,6 @@ namespace SystemOfTestKnowledge.Controllers
             return View(result);
         }
 
-        [Authorize(Roles = "admin")]
-        public IActionResult AddQuestion(string Id)
-        {
-            ViewBag.Id = Id;
-            return View();
-        }
-
-        [Authorize(Roles = "admin")]
-        [HttpPost]
-        public IActionResult AddQuestion(CreateQuestionViewModel model)
-        {
-            var question = new TestingQuestion
-            {
-                Text = model.Text,
-                AnswerOptions = model.AnswerOption,
-                CorrectAnswer = model.CorrectAnswer,
-                TestId = model.TestId
-            };
-            _context.Questions.Add(question);
-            _context.SaveChanges();
-
-            return RedirectToAction("Index","Home");
-        }
 
         public IActionResult GetAnswer(string id, string answer, string correctAnswer)
         {
@@ -96,14 +73,9 @@ namespace SystemOfTestKnowledge.Controllers
                 _context.Add(ans);
                 _context.SaveChanges();
             }
-            return RedirectToAction("StartTest\\" + TestId, "Tests" );
+            return RedirectToRoute("start_test", new { id = TestId.ToString() });
         }
 
-        public IActionResult GoToTestsList()
-        {
-            return RedirectToAction("TestList", "Tests");
-        }
-        
         public IActionResult EndTest(string Id)
         {
             int test_id = Convert.ToInt32(Id);
@@ -135,7 +107,8 @@ namespace SystemOfTestKnowledge.Controllers
             return View(model);
         }
 
-        public IActionResult QuestionList(string Id)
+        [Authorize(Roles = "admin")]
+        public IActionResult QuestionsList(string Id)
         {
             EditTestViewModel model = new EditTestViewModel();
             List<TestingQuestion> questions = new List<TestingQuestion>();
@@ -145,10 +118,31 @@ namespace SystemOfTestKnowledge.Controllers
             model.Questions = questions;
             return View(model);
         }
+        [Authorize(Roles = "admin")]
         [HttpPost]
         public IActionResult QuestionList()
         {
             return View();
+        }
+
+        [Authorize(Roles = "admin")]
+        public IActionResult AddTest()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "admin")]
+        public IActionResult AddTest(Test model)
+        {
+            var test = new Test
+            {
+                Title = model.Title,
+                KnowledgeArea = model.KnowledgeArea
+            };
+            _context.TestTable.Add(test);
+            _context.SaveChanges();
+            return RedirectToRoute("testlist");
         }
     }
 }

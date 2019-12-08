@@ -1,16 +1,19 @@
 ﻿@model SystemOfTestKnowledge.ViewModels.ResultTestViewModel
+@using System.Globalization;
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
 @{
     ViewData["Title"] = "EndTest";
 }
-<p>Количество правильных ответов @Model.CountCorrectAnswer из @Model.CountAllQuestion.</p>
+<p>@Localizer["number"] @Model.CountCorrectAnswer @Localizer["out"] @Model.CountAllQuestion.</p>
 @if (Model.CountAllQuestion / 2 < Model.CountCorrectAnswer)
 {
-    <p>Неплохой результат</p>
+    <p>@Localizer["not_bad"]</p>
 }
 else
 {
-    <p>Вам нужно подтянуть свои знания</p>    
+    <p>@Localizer["bad"]</p>
 }
 
-<a asp-action="GoToTestsList" asp-controller="Tests">Back</a>
+<a asp-route="testlist">@Localizer["back"]</a>
 

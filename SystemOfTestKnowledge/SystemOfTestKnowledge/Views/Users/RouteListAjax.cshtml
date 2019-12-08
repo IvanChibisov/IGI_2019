@@ -1,0 +1,73 @@
+﻿@model SystemOfTestKnowledge.Controllers.PagedData<SystemOfTestKnowledge.Models.User>
+
+@using System.Globalization;
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+
+
+@if (User.IsInRole("admin"))
+{
+    <a asp-route="create_user">@Localizer["add"]</a>
+}
+<table class="table" id="body">
+    <tbody>
+        <tr><th>@Localizer["email"]</th><th>@Localizer["name"]</th><th>@Localizer["age"]</th></tr>
+        @foreach (var user in Model.Data)
+        {
+            @if (User.Identity.Name == @user.Email || User.IsInRole("admin"))
+            {
+                <tr>
+                    <td>@user.Email</td>
+                    <td>@user.Name</td>
+                    <td>@user.Age</td>
+                    <td>
+                        <form asp-action="Delete" asp-route-id="@user.Id" method="post">
+
+                            @if (User.Identity.Name == @user.Email || User.IsInRole("admin"))
+                            {
+                                <a class="btn btn-sm btn-primary" asp-route="edit_user" asp-route-id="@user.Id">@Localizer["edit"]</a>
+                                if (!User.IsInRole("admin"))
+                                {
+                                    <a class="btn btn-sm btn-primary" asp-route="change_password" asp-route-id="@user.Id">@Localizer["change_pass"]</a>
+                                }
+                                else
+                                {
+                                    <a class="btn btn-sm btn-primary" asp-route="change_password_admin" asp-route-id="@user.Id">@Localizer["change_pass"]</a>
+                                }
+
+                            }
+
+                            @if (User.IsInRole("admin"))
+                            {
+                                <button type="submit" class="btn btn-sm btn-danger">
+                                    @Localizer["delete"]
+                                </button>
+                            }
+
+                        </form>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="3">
+                <h4>
+                    @for (int i = 1; i <= Model.NumberOfPages; i++)
+                    {
+                        if (i == Model.CurrentPage)
+                        {
+                            @i
+                        }
+                        else
+                        {
+                            <a class="page-number" href="#">@i</a>
+                        }
+                    }
+                    <h4>
+            </td>
+        </tr>
+    </tfoot>
+</table>
+

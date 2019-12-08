@@ -5,7 +5,6 @@ E:\ИГИ-2019\SystemOfTestKnowledge\SystemOfTestKnowledge\bin\Debug\netcoreapp2
 E:\ИГИ-2019\SystemOfTestKnowledge\SystemOfTestKnowledge\bin\Debug\netcoreapp2.1\SystemOfTestKnowledge.pdb
 E:\ИГИ-2019\SystemOfTestKnowledge\SystemOfTestKnowledge\bin\Debug\netcoreapp2.1\SystemOfTestKnowledge.Views.dll
 E:\ИГИ-2019\SystemOfTestKnowledge\SystemOfTestKnowledge\bin\Debug\netcoreapp2.1\SystemOfTestKnowledge.Views.pdb
-E:\ИГИ-2019\SystemOfTestKnowledge\SystemOfTestKnowledge\obj\Debug\netcoreapp2.1\SystemOfTestKnowledge.csprojAssemblyReference.cache
 E:\ИГИ-2019\SystemOfTestKnowledge\SystemOfTestKnowledge\obj\Debug\netcoreapp2.1\SystemOfTestKnowledge.csproj.CoreCompileInputs.cache
 E:\ИГИ-2019\SystemOfTestKnowledge\SystemOfTestKnowledge\obj\Debug\netcoreapp2.1\SystemOfTestKnowledge.RazorAssemblyInfo.cache
 E:\ИГИ-2019\SystemOfTestKnowledge\SystemOfTestKnowledge\obj\Debug\netcoreapp2.1\SystemOfTestKnowledge.RazorAssemblyInfo.cs
@@ -44,5 +43,16 @@ E:\ИГИ-2019\SystemOfTestKnowledge\SystemOfTestKnowledge\obj\Debug\netcoreapp2
 E:\ИГИ-2019\SystemOfTestKnowledge\SystemOfTestKnowledge\obj\Debug\netcoreapp2.1\Razor\Views\Tests\EndTest.g.cshtml.cs
 E:\ИГИ-2019\SystemOfTestKnowledge\SystemOfTestKnowledge\obj\Debug\netcoreapp2.1\Razor\Views\Tests\Components\Question\Default.g.cshtml.cs
 E:\ИГИ-2019\SystemOfTestKnowledge\SystemOfTestKnowledge\obj\Debug\netcoreapp2.1\Razor\Views\Home\Privacy.g.cshtml.cs
-E:\ИГИ-2019\SystemOfTestKnowledge\SystemOfTestKnowledge\obj\Debug\netcoreapp2.1\Razor\Views\Tests\AddQuestion.g.cshtml.cs
 E:\ИГИ-2019\SystemOfTestKnowledge\SystemOfTestKnowledge\obj\Debug\netcoreapp2.1\Razor\Views\Tests\QuestionsList.g.cshtml.cs
+E:\ИГИ-2019\SystemOfTestKnowledge\SystemOfTestKnowledge\obj\Debug\netcoreapp2.1\Razor\Views\Tests\AddTest.g.cshtml.cs
+E:\ИГИ-2019\SystemOfTestKnowledge\SystemOfTestKnowledge\obj\Debug\netcoreapp2.1\Razor\Views\Question\EditQuestion.g.cshtml.cs
+E:\ИГИ-2019\SystemOfTestKnowledge\SystemOfTestKnowledge\obj\Debug\netcoreapp2.1\Razor\Views\Question\AddQuestion.g.cshtml.cs
+E:\ИГИ-2019\SystemOfTestKnowledge\SystemOfTestKnowledge\obj\Debug\netcoreapp2.1\Razor\Views\Users\Index.g.cshtml.cs
+E:\ИГИ-2019\SystemOfTestKnowledge\SystemOfTestKnowledge\obj\Debug\netcoreapp2.1\Razor\Views\Users\RouteListAjax.g.cshtml.cs
+E:\ИГИ-2019\SystemOfTestKnowledge\SystemOfTestKnowledge\bin\Debug\netcoreapp2.1\en\SystemOfTestKnowledge.resources.dll
+E:\ИГИ-2019\SystemOfTestKnowledge\SystemOfTestKnowledge\bin\Debug\netcoreapp2.1\ru\SystemOfTestKnowledge.resources.dll
+E:\ИГИ-2019\SystemOfTestKnowledge\SystemOfTestKnowledge\obj\Debug\netcoreapp2.1\SystemOfTestKnowledge.Resources.View.Account.Login.en.resources
+E:\ИГИ-2019\SystemOfTestKnowledge\SystemOfTestKnowledge\obj\Debug\netcoreapp2.1\SystemOfTestKnowledge.Resources.View.Account.Login.ru.resources
+E:\ИГИ-2019\SystemOfTestKnowledge\SystemOfTestKnowledge\obj\Debug\netcoreapp2.1\SystemOfTestKnowledge.csproj.GenerateResource.cache
+E:\ИГИ-2019\SystemOfTestKnowledge\SystemOfTestKnowledge\obj\Debug\netcoreapp2.1\en\SystemOfTestKnowledge.resources.dll
+E:\ИГИ-2019\SystemOfTestKnowledge\SystemOfTestKnowledge\obj\Debug\netcoreapp2.1\ru\SystemOfTestKnowledge.resources.dll
