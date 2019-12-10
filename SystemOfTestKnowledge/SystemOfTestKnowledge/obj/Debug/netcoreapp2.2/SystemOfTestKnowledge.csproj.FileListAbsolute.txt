@@ -102,4 +102,7 @@ E:\ИГИ-2019\SystemOfTestKnowledge\SystemOfTestKnowledge\obj\Debug\netcoreapp2
 E:\ИГИ-2019\SystemOfTestKnowledge\SystemOfTestKnowledge\obj\Debug\netcoreapp2.2\SystemOfTestKnowledge.Resources.Views.Users.UserSetting.en.resources
 E:\ИГИ-2019\SystemOfTestKnowledge\SystemOfTestKnowledge\obj\Debug\netcoreapp2.2\SystemOfTestKnowledge.Resources.Views.Users.UserSetting.ru.resources
 E:\ИГИ-2019\SystemOfTestKnowledge\SystemOfTestKnowledge\obj\Debug\netcoreapp2.2\Razor\Views\Home\About.g.cshtml.cs
-E:\ИГИ-2019\SystemOfTestKnowledge\SystemOfTestKnowledge\obj\Debug\netcoreapp2.2\SystemOfTestKnowledge.csprojAssemblyReference.cache
+E:\ИГИ-2019\SystemOfTestKnowledge\SystemOfTestKnowledge\obj\Debug\netcoreapp2.2\SystemOfTestKnowledge.Resources.Views.Home.About.en.resources
+E:\ИГИ-2019\SystemOfTestKnowledge\SystemOfTestKnowledge\obj\Debug\netcoreapp2.2\SystemOfTestKnowledge.Resources.Views.Home.About.ru.resources
+E:\ИГИ-2019\SystemOfTestKnowledge\SystemOfTestKnowledge\obj\Debug\netcoreapp2.2\SystemOfTestKnowledge.Resources.Views.Home.Privacy.ru.resources
+E:\ИГИ-2019\SystemOfTestKnowledge\SystemOfTestKnowledge\obj\Debug\netcoreapp2.2\SystemOfTestKnowledge.Resources.Views.Home.Privacy.en.resources

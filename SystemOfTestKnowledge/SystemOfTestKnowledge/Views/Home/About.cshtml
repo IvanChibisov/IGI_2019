@@ -1,4 +1,7 @@
 ﻿@page
+@using System.Globalization;
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
 @{
     string user = "";
     if (User.Identity.IsAuthenticated == true)
@@ -11,11 +14,11 @@
 <div class="container">
     <div class="row">&nbsp;</div>
     <div class="row">
-        <div class="col-2">User</div>
+        <div class="col-2">@Localizer["User"]</div>
         <div class="col-4"><input type="text" id="userInput" hidden="hidden" value="@user" />@user</div>
     </div>
     <div class="row">
-        <div class="col-2">Message</div>
+        <div class="col-2">@Localizer["message"]</div>
         <div class="col-4"><input type="text" id="messageInput" /></div>
     </div>
     <div class="row">&nbsp;</div>
@@ -33,7 +36,7 @@
 
 @foreach (Comment comment in ViewBag.Comments)
 {
-    <ul>@comment.UserName says: @comment.Text</ul>
+    <ul>@comment.UserName @Localizer["say"]: @comment.Text</ul>
 }
 <div class="row">
     <div class="col-6">

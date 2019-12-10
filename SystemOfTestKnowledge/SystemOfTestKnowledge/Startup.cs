@@ -61,7 +61,7 @@ namespace SystemOfTestKnowledge
         {
             app.UseSignalR(routes =>
             {
-                routes.MapHub<Chat>("/Chat");
+                routes.MapHub<Chat>("/chatHub");
             });
             if (env.IsDevelopment())
             {
