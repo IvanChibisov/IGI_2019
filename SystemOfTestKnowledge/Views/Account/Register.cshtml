@@ -1,0 +1,42 @@
+﻿@model SystemOfTestKnowledge.ViewModels.RegisterViewModel
+@using System.Globalization;
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+
+@{
+    ViewData["Title"] = Localizer["register"];
+}
+
+<h2>@Localizer["register_new"]</h2>
+
+<form method="post" asp-route="rigester">
+    <div asp-validation-summary="ModelOnly"></div>
+    <div>
+        <label asp-for="Email">@Localizer["email"]</label><br />
+        <input asp-for="Email" />
+        <span asp-validation-for="Email"></span>
+    </div>
+    <div>
+        <label asp-for="Name">@Localizer["name"]</label><br />
+        <input asp-for="Name" />
+        <span asp-validation-for="Name"></span>
+    </div>
+    <div>
+        <label asp-for="Age">@Localizer["age"]</label><br />
+        <input asp-for="Age" />
+        <span asp-validation-for="Age"></span>
+    </div>
+    <div>
+        <label asp-for="Password">@Localizer["password"]</label><br />
+        <input asp-for="Password" />
+        <span asp-validation-for="Password"></span>
+    </div>
+    <div>
+        <label asp-for="PasswordConfirm">@Localizer["confirm_pass"]</label><br />
+        <input asp-for="PasswordConfirm" />
+        <span asp-validation-for="PasswordConfirm"></span>
+    </div>
+    <div>
+        <input type="submit" value="@Localizer["register"]" />
+    </div>
+</form>

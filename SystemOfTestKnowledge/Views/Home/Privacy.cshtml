@@ -1,0 +1,10 @@
+﻿@using System.Globalization;
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+@{
+    ViewData["Title"] = "Privacy";
+}
+<vk></vk>
+
+<a class="btn btn-sm btn-default" asp-route="chat">@Localizer["chat"]</a>
+

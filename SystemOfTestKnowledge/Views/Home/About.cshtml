@@ -1,0 +1,48 @@
+﻿@page
+@using System.Globalization;
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+@{
+    string user = "";
+    if (User.Identity.IsAuthenticated == true)
+    {
+        user = User.Identity.Name;
+    }
+    else
+    { user = "unknown User"; }
+}
+<div class="container">
+    <div class="row">&nbsp;</div>
+    <div class="row">
+        <div class="col-2">@Localizer["User"]</div>
+        <div class="col-4"><input type="text" id="userInput" hidden="hidden" value="@user" />@user</div>
+    </div>
+    <div class="row">
+        <div class="col-2">@Localizer["message"]</div>
+        <div class="col-4"><input type="text" id="messageInput" /></div>
+    </div>
+    <div class="row">&nbsp;</div>
+    <div class="row">
+        <div class="col-6">
+            <input type="button" id="sendButton" value="@Localizer["send"]" />
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <hr />
+    </div>
+</div>
+
+@foreach (Comment comment in ViewBag.Comments)
+{
+    <ul>@comment.UserName @Localizer["say"]: @comment.Text</ul>
+}
+<div class="row">
+    <div class="col-6">
+        <ul id="messagesList"></ul>
+    </div>
+</div>
+<script src="~/js/signalr/dist/browser/signalr.js"></script>
+<script src="~/js/chat.js"></script>
+

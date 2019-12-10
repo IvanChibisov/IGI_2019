@@ -1,0 +1,45 @@
+﻿@model IEnumerable<SystemOfTestKnowledge.Models.Test>
+@using System.Globalization;
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+@{
+    ViewData["Title"] = Localizer["list"];
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>@Localizer["q_list"]</title>
+</head>
+<body>
+
+    <table>
+        <tr><th>@Localizer["title"]</th><th>@Localizer["language"]</th></tr>
+        @foreach (var test in Model)
+        {
+            <tr>
+                <td>@test.Title</td>
+                <td>@test.KnowledgeArea</td>
+                <td>
+                    <form asp-route="start_test" asp-route-id="@test.Id" method="post">
+                        <button type="submit" class="btn btn-sm btn-danger">
+                            @Localizer["begin"]
+                        </button>
+                        @if (User.IsInRole("admin"))
+                        {
+                            <a class="btn btn-sm btn-primary" asp-route="add_question" asp-route-id="@test.Id">@Localizer["add_q"]</a>
+                            <a class="btn btn-sm btn-primary" asp-route="questionlist" asp-route-id="@test.Id">@Localizer["edit_q"]</a>
+                        }
+                    </form>
+                </td>
+            </tr>
+        }
+    </table>
+    @if (User.IsInRole("admin"))
+    {
+        <a class="btn btn-sm btn-danger" asp-action="AddTest" asp-controller="Tests">@Localizer["add"]</a>
+    }
+</body>
+</html>
+
